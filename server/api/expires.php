@@ -1,7 +1,7 @@
 <?php
 $api_key = $_SERVER['HTTP_X_API_KEY'];
 
-if (strcmp($api_key, '044WrYwb3w4WR8TAGr6') != 0) {
+if (strcmp($api_key, 'REDACTED') != 0) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
