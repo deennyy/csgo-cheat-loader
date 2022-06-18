@@ -12,7 +12,7 @@ bool loader::inject() {
 		sub_status = response;
 		return false;
 	}
-
+	
 	std::string dll;
 
 	CryptoPP::CBC_Mode< CryptoPP::AES >::Decryption d;
@@ -20,15 +20,15 @@ bool loader::inject() {
 
 	CryptoPP::StringSource s(response, true, new CryptoPP::HexDecoder(new CryptoPP::StreamTransformationFilter(d, new CryptoPP::StringSink(dll))));
 	
-    auto size = sizeof(dll) / sizeof(dll[0]);
+	auto size = sizeof(dll) / sizeof(dll[0]);
 
-    blackbone::Process proc;
+	blackbone::Process proc;
 
-    proc.Attach(xorstr_(L"csgo.exe"));
+	proc.Attach(xorstr_(L"csgo.exe"));
 
-    proc.mmap().MapImage(size, (char*)dll.c_str(), false, blackbone::WipeHeader);
+	proc.mmap().MapImage(size, (char*)dll.c_str(), false, blackbone::WipeHeader);
 
-    proc.Detach();
+	proc.Detach();
 
 	return true;
 }
