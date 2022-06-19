@@ -14,7 +14,7 @@ $query = $sql->query('SELECT hwid FROM users WHERE username=?', [$username]);
 $rows = $query->fetch_all(1);
 $hwid = NULL;
 foreach ($rows as $row) {
-    $hwid = $row['hwid'];
+	$hwid = $row['hwid'];
 }
 if ($hwid == NULL) {
 	$sql->query('UPDATE users SET hwid=? WHERE username=?', [$get_hwid, $username]);
